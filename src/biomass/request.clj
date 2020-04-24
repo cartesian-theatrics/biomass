@@ -10,15 +10,16 @@
 (defonce $HMAC_ALGORITHM "HmacSHA1")
 (defonce $API_VERSION "2012-03-25")
 (defonce $SERVICE "AWSMechanicalTurkRequester")
-(defonce $SANDBOX_BASE_URL "https://mechanicalturk.sandbox.amazonaws.com/")
-(defonce $PRODUCTION_BASE_URL "https://mechanicalturk.amazonaws.com/")
+(defonce $SANDBOX_BASE_URL "https://requestersandbox.mturk.com")
+(defonce $PRODUCTION_BASE_URL "https://requester.mturk.com/")
 
 (def aws-access-key (ref nil))
 (def aws-secret-access-key (ref nil))
 (def base-url (ref nil))
 
 (defn setup
-  [{:keys [AWSAccessKey AWSSecretAccessKey sandbox] :or [sandbox false]}]
+  [{:keys [AWSAccessKey AWSSecretAccessKey sandbox]
+    :or {sandbox false}}]
   (dosync
    (ref-set aws-access-key AWSAccessKey)
    (ref-set aws-secret-access-key AWSSecretAccessKey)
